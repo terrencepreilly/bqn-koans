@@ -12,7 +12,7 @@
 #     See the License for the specific language governing permissions and
 #     limitations under the License.
 
-koans ← "basic_math"‿"order_of_evaluation"‿"monadic"‿"lists"‿"pervasive"
+koans ← "basic_math"‿"order_of_evaluation"‿"monadic"‿"lists"‿"pervasive"‿"modifiers"
 
 # ANSII Escape codes for colors.
 red ← (27 + @) ∾ "[31m"
@@ -75,6 +75,7 @@ ExecuteTests ← {
       (•Repr ≠ filesPassed)
       "/"
       (•Repr ≠ reports)
-      " lessons along the path to enlightenment."
+      " lessons along the path to enlightenment.
+      "
   ⟩
 } koans
