@@ -18,9 +18,10 @@ ts ← TestSuite "Modifiers"
 
 
 # The functions we've seen so far take a value and return a value. BQN also
-# supports higher-order functions, which return a function. One of the simplest
-# of these is ˙ (Constant), which takes a value and returns a function whose
-# result is always that value.
+# supports higher-order functions, which return a function. These are called
+# "modifiers". A monadic modifier is called a 1-modifier. One of the simplest of
+# these is ˙ (Constant), which takes a value and returns a function whose result
+# is always that value.
 
 { 𝕤 ⋄ ∞ = 0˙ "any value" } ts._Test "Numeric constant"
 { 𝕤 ⋄ ∞ ≡ "No"˙ ∞ } ts._Test "String constant"
@@ -105,5 +106,15 @@ ts ← TestSuite "Modifiers"
 { 𝕤 ⋄ ∞ = ×´ 1‿2‿3‿4‿5 } ts._Test "Multiplying over a list"
 { 𝕤 ⋄ ∞ = -´ 1‿2‿3‿4‿5 } ts._Test "Alternating series"
 
+
+# Empty lists could be problematic for ´.  For such lists,
+# the identity value is used. (An identity value, 𝕨, for an operation, 𝕗,
+# is a value such that for any value 𝕩, 𝕨 𝕗 𝕩 = 𝕩.)
+
+{ 𝕤 ⋄ ∞ = +´ ⟨⟩ } ts._Test "Identity value for +"
+{ 𝕤 ⋄ ∞ = -´ ⟨⟩ } ts._Test "Identity value for -"
+{ 𝕤 ⋄ ∞ = ×´ ⟨⟩ } ts._Test "Identity value for ×"
+{ 𝕤 ⋄ ∞ = ÷´ ⟨⟩ } ts._Test "Identity value for ÷"
+{ 𝕤 ⋄ ∞ = ⋆´ ⟨⟩ } ts._Test "Identity value for ⋆"
 
 ts.Report @

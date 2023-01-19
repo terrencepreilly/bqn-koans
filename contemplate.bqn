@@ -12,7 +12,15 @@
 #     See the License for the specific language governing permissions and
 #     limitations under the License.
 
-koans ← "basic_math"‿"order_of_evaluation"‿"monadic"‿"lists"‿"pervasive"‿"modifiers"
+koans ← ⟨
+  "basic_math"
+  "order_of_evaluation"
+  "monadic"
+  "lists"
+  "pervasive"
+  "modifiers"
+  "arrays"
+⟩
 
 # ANSII Escape codes for colors.
 red ← (27 + @) ∾ "[31m"
