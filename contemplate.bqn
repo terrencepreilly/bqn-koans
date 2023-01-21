@@ -20,6 +20,7 @@ koans ← ⟨
   "pervasive"
   "modifiers"
   "arrays"
+  "assignment_and_roles"
 ⟩
 
 # ANSII Escape codes for colors.
