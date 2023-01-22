@@ -103,8 +103,20 @@ ts ← TestSuite "Assignment"
 #
 # ∘ (Atop) is a 2-modifier which is modeled after mathematical composition.
 # The function 𝔽 ∘ 𝔾 is a function which first applies 𝔾 to its arguments,
-# then applies 𝔽 to the results of those arguments.  First, we'll see how to
-# use ∘, then we'll assign it to a variable to see how that role is communciated.
+# then applies 𝔽 to the results of those arguments.  That is, 𝔽 ∘ 𝔾 𝕩 is equivalent
+# to 𝔽 (𝔾 x), and 𝕨 𝔽 ∘ 𝔾 𝕩 is equivalent to 𝔽 (𝕨 𝔾 𝕩).  Graphically, it can
+# be depicted
+#
+#     𝔽 ∘ 𝔾 𝕩      𝕨 𝔽 ∘ 𝔾 𝕩
+#
+#       𝔽              𝔽
+#       │              │
+#       𝔾              𝔾
+#       │             ╱ ╲
+#       𝕩            𝕨   𝕩
+#
+# First, we'll see how to use ∘, then we'll assign it to a variable to see how
+# that role is communciated.
 
 { 𝕤 ⋄
   ∞ = ÷ ∘ √ 4
