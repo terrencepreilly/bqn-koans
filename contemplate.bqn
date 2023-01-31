@@ -21,6 +21,8 @@ koans ← ⟨
   "modifiers"
   "arrays"
   "assignment_and_roles"
+  "combinators"
+  "blocks"
 ⟩
 
 # ANSII Escape codes for colors.
