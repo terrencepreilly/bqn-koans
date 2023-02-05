@@ -152,7 +152,7 @@ ts ← TestSuite "Blocks"
 
 { 𝕤 ⋄
   ∞ = 2 { 𝕨 × 𝕩 } 3
-} ts._Test "Simple dyadic verb"
+} ts._Test "Simple dyadic function"
 
 { 𝕤 ⋄
   ∞ = 2 { 𝕩 - 𝕨 } 3
@@ -227,7 +227,5 @@ ts ← TestSuite "Blocks"
   SumTo ← { 𝕨 {0 = 𝕩}◶({𝕨 + 𝕩} 𝕊 {𝕩 - 1})‿{𝕨} 𝕩 }
   ∞ = 0 SumTo 3
 } ts._Test "Sum from 1 to n - 1"
-
-# TODO: Add a discussion of trains before this.
 
 ts.Report @
