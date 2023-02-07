@@ -39,6 +39,7 @@ ts ← TestSuite "Lists"
 # The related function, ≢ (Not Match) checks if two lists are not equal.
 
 { 𝕤 ⋄ ⟨1, 2⟩ ≢ ⟨1, 2⟩} ts._Test "List inequality"
+{ 𝕤 ⋄ ⟨⟩ ≢ ⟨⟩} ts._Test "Empty list inequality"
 
 
 # In addition to commas, newlines or ⋄ can be used as a separator. These

@@ -31,12 +31,12 @@ ts ← TestSuite "Monadic Functions"
 { 𝕤 ⋄ ∞ = - 1} ts._Test "Negate"
 
 
-# When a verb does not have a left argument, it is evaluated as monadic.
-# This can occur when a monadic verb is in an expression by itself,
-# or when adjacent to other verbs.
+# When a function does not have a left argument, it is evaluated as monadic.
+# This can occur when a monadic function is in an expression by itself,
+# or when adjacent to other functions.
 
 { 𝕤 ⋄ ∞ = - 2 } ts._Test "Monadic expression"
-{ 𝕤 ⋄ ∞ = 1 + - 1 } ts._Test "Adjacent verbs"
+{ 𝕤 ⋄ ∞ = 1 + - 1 } ts._Test "Adjacent functions"
 
 
 # Monadic × (Sign) gives the sign of its argument, ¯1 if negative,

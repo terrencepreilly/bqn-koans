@@ -143,11 +143,13 @@ ts ← TestSuite "Arrays"
 
 # So far, when discussing the values that make up an array, we've been discussing
 # elements.  Elements are the smallest component values of an array: values like
-# 1 or 'z'.  An array with no elements is empty.
+# 1 or 'z'.  An array with no elements is empty.  The 1-modifier, ¨, applies the
+# function to every element in the array.
 
 { 𝕤 ⋄ ∞ = ≠ ⥊ 2‿3‿2 ⥊ 1‿2‿3 } ts._Test "Get # of elements in the array"
 
-# HINT: Add a 1-modifier to finish the expression
+# HINT: Add a 1-modifier to finish the expressions
+{ 𝕤 ⋄ (3‿1 ⥊ 1) ≡ 1˙ 3‿↑ ⥊ 1‿2 } ts._Test "Modifying elements in the array"
 { 𝕤 ⋄ 9 ≡ × ≢ 3‿1‿3 ⥊ 'a' } ts._Test "Another way to get # of elements"
 
 
@@ -170,6 +172,37 @@ ts ← TestSuite "Arrays"
 
 { 𝕤 ⋄ ∞ ≡ 0 ⊏ 2‿2 ⥊ "abcd" } ts._Test "Get first major cell"
 { 𝕤 ⋄ ∞ ≡ 1 ⊏ 2‿2 ⥊ "abcd" } ts._Test "Get second major cell"
+
+
+# The 1-modifier ´, which we saw earlier, inserts the given function between
+# the elements of its argument.  Similarly, ˝ (Insert) inserts the given function
+# between the major cells of its argument.
+
+{ 𝕤 ⋄ ∞ ≡ +˝ 2‿2 ⥊ 1‿2‿3‿4 } ts._Test "Summing columns"
+{ 𝕤 ⋄
+  (+´ ⟨3⟩ ⥊ ⟨1⟩) ≡ +˝ 3‿3 ⥊ 1‿2‿3
+} ts._Test "Adding lists vs summing columns"
+
+{ 𝕤 ⋄ ∞ = +´ ⟨3⟩ ⥊ 1 } ts._Test "Summing over a list"
+{ 𝕤 ⋄ ∞ = +´ +˝ 3‿3 ⥊ 1 } ts._Test "Summing over summed columns"
+{ 𝕤 ⋄
+  ∞ = +´ +˝ +˝ 3‿3‿3 ⥊ 1
+} ts._Test "Sum over summed columns of summed tables"
+
+
+# The 1-modifier ¨ applies the function to the elements of the array.
+# Likewise, the 1-modifier ˘ (Cells) applies the function to the major cells
+# of the array.
+
+{ 𝕤 ⋄ ∞ ≡ ≠˘ 2‿3 ⥊ 1 } ts._Test "Length of major cells"
+
+{ 𝕤 ⋄
+  ∞ ≡ +´˘ 2‿3 ⥊ 1‿1‿1‿2‿2‿2
+} ts._Test "Sum the rows of an array"
+
+{ 𝕤 ⋄
+  (2‿2 ⥊ ⟨1⟩) ≡ ⊏˘ 2‿2‿2 ⥊ 1‿2‿3‿4
+} ts._Test "Take the first major cell of each major cell"
 
 
 ts.Report @

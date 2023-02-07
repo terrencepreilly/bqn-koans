@@ -33,10 +33,12 @@ ts ← TestSuite "Order of Evaluation"
 { 𝕤 ⋄ ∞ = ((1 + 3) × 2) ÷ 4 } ts._Test "Nested parentheses"
 
 
-# = (Equals) is no exception to the order of evaluation, which is why koans
-# with expressions of the left of = typically use parentheses.
+# = (Equals) and ≠ (Not Equals) are no exception to the order of evaluation,
+# which is why koans with expressions of the left of = typically use
+# parentheses.
 
-{ 𝕤 ⋄ 3 + 5 = 8 } ts._Test "Equals is a Function"
+{ 𝕤 ⋄ 3 + 5 = 8 } ts._Test "Equals is a function"
+{ 𝕤 ⋄ 2 + 2 ≠ 4 } ts._Test "Not equals is a function"
 { 𝕤 ⋄ 9 ÷ 3 - 2 + 1 = 2 } ts._Test "Nested parentheses on left"
 { 𝕤 ⋄ 4 = 3 = 2 = 1 } ts._Test "Comparing truthiness"
 

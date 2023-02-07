@@ -22,6 +22,7 @@ koans ← ⟨
   "arrays"
   "assignment_and_roles"
   "combinators"
+  "trains"
   "blocks"
 ⟩
 
