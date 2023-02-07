@@ -38,6 +38,12 @@ ts ← TestSuite "Assignment"
   ∞ = +´ b × a
 } ts._Test "Multiple variables"
 
+{ 𝕤 ⋄
+  shape ← 2‿∘
+  data ← 1‿2‿3‿4‿5‿6
+  (2‿0 ⥊ data) ≡ shape ⥊ data
+} ts._Test ""
+
 
 # If a value is going to be used as a function (the function role), its name
 # should begin with a capital letter, and should not start or with a '_'.
@@ -75,6 +81,11 @@ ts ← TestSuite "Assignment"
   Frobinate ← ÷
   ∞ = 4 Frobinate 2
 } ts._Test "Function with a function role"
+
+{
+  Deshape ← ⥊
+  ∞ ≡ Deshape 2‿2 ⥊ 1‿2‿3
+} ts._Test "Deshaping"
 
 { 𝕤 ⋄
   SumOver ← +´

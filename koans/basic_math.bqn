@@ -16,14 +16,22 @@
 
 ts ← TestSuite "Basic Maths"
 
+
 # BQN Koans
 #
 # To complete the koans, make the last statement in each test function
 # true.  For example, the following test demonstrates the use of the
-# function + (Add).  Replace the ∞ with the number 2.
+# functions = (Equals) and + (Add).  Replace the ∞ with the number 2.
 
-{ 𝕤 ⋄ ∞ = 1 + 1 } ts._Test "Addition"
+{ 𝕤 ⋄ ∞ = 1 + 1 } ts._Test "Addition equals"
 { 𝕤 ⋄ ∞ = 1 + 0 } ts._Test "Addition identity"
+
+
+# Some functions may make use of the function ≠ (Not Equals) to assert
+# some true statement.
+
+{ 𝕤 ⋄ ∞ ≠ ∞ } ts._Test "Not equals"
+{ 𝕤 ⋄ 4 ≠ 2 + 2} ts._Test "Addition not equals"
 
 
 # Subtraction is done with - (Subtract).  In these koans,
@@ -54,10 +62,12 @@ ts ← TestSuite "Basic Maths"
 { 𝕤 ⋄ ∞ = 1 × ¯9 } ts._Test "Multiplication identity"
 { 𝕤 ⋄ (2 × ∞) = 4 } ts._Test "Doubling"
 
+
 # And division is performed with ÷ (Divide).
 
 { 𝕤 ⋄ ∞ = 4 ÷ 2 } ts._Test "Divide"
 { 𝕤 ⋄ ∞ = 4 ÷ 1 } ts._Test "Division identity"
+
 
 # ⋆ (Power) performs exponentiation.  The symbol is a unicode star,
 # not the asterisk symbol.
@@ -67,6 +77,7 @@ ts ← TestSuite "Basic Maths"
 { 𝕤 ⋄ ∞ = 2 ⋆ 4 } ts._Test "Fourth power"
 { 𝕤 ⋄ (3 ⋆ ∞) = 27 } ts._Test "Three raised to a power"
 { 𝕤 ⋄ (4 ⋆ ∞) = 4 × 4 × 4 × 4 × 4 × 4 } ts._Test "Four raised to a power"
+
 
 # √ (Root) takes the root of a number.  That is, 𝕨 √ 𝕩 is equivalent to
 # 𝕨 ⋆ 1 ÷ 𝕩.

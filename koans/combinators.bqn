@@ -95,5 +95,11 @@ ts ← TestSuite "Combinators"
   9‿2‿3 EquivalentMagnitude ¯9‿2‿¯3
 } ts._Test "Checking magnitude"
 
+{ 𝕤 ⋄
+  array1 ← 1‿3 ⥊ 1‿2
+  array2 ← 3‿1 ⥊ 1‿2
+  ∞ ≡ array1 +○⥊ array2
+} ts._Test "Adding dissimilar shaped arrays"
+
 
 ts.Report @

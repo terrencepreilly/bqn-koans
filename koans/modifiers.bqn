@@ -40,7 +40,7 @@ ts ← TestSuite "Modifiers"
 
 { 𝕤 ⋄ 2‿∞‿∞ ≡ ≠¨ ⟨1‿2, 1‿2‿3, 1‿2‿3‿4⟩ } ts._Test "Get lengths"
 { 𝕤 ⋄ 1‿∞ ≡ ≠¨ ⟨1⟩‿⟨1, 2⟩ } ts._Test "Applying length to each"
-{ 𝕤 ⋄ 2‿∞ ≡ ≠¨ ⟨⟨1⟩, ⟨1, 2⟩⟩‿⟨1⟩ } ts._Test "Applying length again"
+{ 𝕤 ⋄ ∞‿1 ≡ ≠¨ ⟨⟨1⟩, ⟨1, 2⟩⟩‿⟨1⟩ } ts._Test "Applying length again"
 
 
 # We said previously that normal functions are evaluated from
@@ -73,6 +73,7 @@ ts ← TestSuite "Modifiers"
 #   𝔾
 
 { 𝕤 ⋄ ∞ ≡ 1˙¨ 2‿4 } ts._Test "Combining modifiers"
+{ 𝕤 ⋄ "   " ≢ ' '˙¨ 1‿2‿3 } ts._Test "Combining modifiers in strings"
 
 
 # Take another example, with ¨.  ¨ can be repeated to reach deeper into lists.
@@ -91,13 +92,14 @@ ts ← TestSuite "Modifiers"
 
 { 𝕤 ⋄ ∞ = =´ 0‿0‿1‿0‿1 } ts._Test "Check if all elements are equal"
 { 𝕤 ⋄ ∞ = ÷´ 4‿4‿4‿4‿4‿4‿2 } ts._Test "Repeated division"
+{ 𝕤 ⋄ 1‿2‿3 ≢ +´¨ ⟨⟨1⟩, 1‿1, 1‿1‿1⟩ } ts._Test "Folding addition of each"
 
 
 # ´ generalizes a common pattern in many Mathematical expressions, called
-# iterated binary operations. Typically these are written as large Greek letters,
-# or large versions of the operations.  Summing over a list, for example, is
-# written with a large ∑, and or'ing over a list of booleans is written with a
-# large or-symbol, ∨.
+# iterated binary operations. Typically these are written as large Greek
+# letters, or large versions of the operations. Summing over a list, for
+# example, is written with a large ∑, and or'ing over a list of booleans is
+# written with a large or-symbol, ∨.
 #
 # One major advantage of ´ is that it allows you to fold any binary function,
 # whereas the Mathematical operations are special cases.
@@ -107,9 +109,9 @@ ts ← TestSuite "Modifiers"
 { 𝕤 ⋄ ∞ = -´ 1‿2‿3‿4‿5 } ts._Test "Alternating series"
 
 
-# Empty lists could be problematic for ´.  For such lists,
-# the identity value is used. (An identity value, 𝕨, for an operation, 𝕗,
-# is a value such that for any value 𝕩, 𝕨 𝕗 𝕩 = 𝕩.)
+# Empty lists could be problematic for ´. For such lists, the identity value
+# is used. (An identity value, 𝕨, for an operation, 𝕗, is a value such that
+# for any value 𝕩, 𝕨 𝕗 𝕩 = 𝕩.)
 
 { 𝕤 ⋄ ∞ = +´ ⟨⟩ } ts._Test "Identity value for +"
 { 𝕤 ⋄ ∞ = -´ ⟨⟩ } ts._Test "Identity value for -"

@@ -140,9 +140,34 @@ ts ← TestSuite "Trains"
   Id ← { 𝕩 }
   Left ← { 𝕨 }
   (Id Left Id Left Id Left Id) 0
-} ts._Test ""
+} ts._Test "A long train"
 
-# TODO: Add something about having elements as left arguments to verbs
-# becoming verbs.
+
+# Function application shares the lowest precedence level with assignment.
+# Once all other parts of an expression are evaluated, the expression can be
+# either a function expression or a subject expression. It is a subject
+# expression if the rightmost element is a subject, otherwise it is a function
+# expression. This means that expressions with subjects _not_ at the rightmost
+# expression are function expressions. How is this so? The subjects, in these
+# cases, are treated as having an implicit ˙. That is, 𝕩 𝔽 𝔾 is equivalent to
+# 𝕩˙ 𝔽 𝔾.
+
+{ 𝕤 ⋄
+  # We can tell that it is a function expression immediately, because it doesn't
+  # fail when assigned to a variable with a function role.
+  F ← 1 + -
+  (1˙ + -) ≠ F 3
+} ts._Test "Equivalence of left subject with constant"
+
+{ 𝕤 ⋄
+  DoubleFlatten ← 2 × ⥊
+  ∞ ≡ DoubleFlatten 2‿2 ⥊ 1‿2
+} ts._Test "Double a flattened array"
+
+{ 𝕤 ⋄
+  Decrement ← 1 -˜ ⥊
+  ∞ ≡ Decrement 1‿2‿3
+} ts._Test "Decrement"
+
 
 ts.Report @
