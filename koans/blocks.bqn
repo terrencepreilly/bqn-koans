@@ -81,6 +81,20 @@ ts ← TestSuite "Blocks"
   ((2 + ∞ × π) ÷ π) = cylinder_surface_area
 } ts._Test "Keeping things clean"
 
+{ 𝕤 ⋄
+  seq ← 0
+  {
+      nums ← 4‿∘ ⥊ ⟨
+        1, 0, 0, 0
+        2, 3, 0, 0
+        4, 5, 6, 0
+        7, 8, 9, 10
+      ⟩
+      seq ↩ +˝ nums
+  }
+  ∞ ≡ seq
+} ts._Test "Building a sequence"
+
 
 # To define a function using a block, you can simply use the special name, 𝕩.
 # 𝕩 represents the right-hand argument. If the block contains at least one 𝕩, then
@@ -107,7 +121,6 @@ ts ← TestSuite "Blocks"
   } 2
 } ts._Test "Multiple statements with newline separator"
 
-
 { 𝕤 ⋄
   a ← 0
   {
@@ -115,6 +128,12 @@ ts ← TestSuite "Blocks"
   } 5
   ∞ = a
 } ts._Test "Redefining in a scope"
+
+{ 𝕤 ⋄
+  PairOverLengthExplicit ← { - ≠ 𝕩 }
+  PairOverLength ← -○≠
+  (PairOverLength ≢ PairOverLengthExplicit) 1‿2‿3‿4
+} ts._Test "Replicating over"
 
 
 # Like other function definitions, blocks can be assigned to a variable.
@@ -165,6 +184,12 @@ ts ← TestSuite "Blocks"
 { 𝕤 ⋄
   ∞ ≡ 4 { 𝕨 × ÷ 𝕩 } 2‿4‿1
 } ts._Test "List arguments"
+
+{ 𝕤 ⋄
+  PairOverLengthExplicit ← { (≠ 𝕨) ⋈ ≠ 𝕩 }
+  PairOverLength ← ⋈○≠
+  ⟨1⟩ (PairOverLength ≢ PairOverLengthExplicit) 1‿2‿3‿4
+} ts._Test "Replicating dyadic over"
 
 
 # The arguments 𝕘 and 𝕗 are similar to 𝕨 and 𝕩, in that they refer to the left
