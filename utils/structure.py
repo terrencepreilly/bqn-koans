@@ -29,7 +29,7 @@ import itertools
 import math
 import os
 
-PRIMITIVES = '+-×÷⋆√⌊⌈∧∨¬|≤<>≥=≠≡≢⊣⊢⥊∾≍⋈↑↓↕»«⌽⍉/⍋⍒⊏⊑⊐⊒∊⍷⊔!˙˜∘○⊸⟜⊘◶⌾⎊˘¨⌜⁼´˝`'
+PRIMITIVES = '←↩+-×÷⋆√⌊⌈∧∨¬|≤<>≥=≠≡≢⊣⊢⥊∾≍⋈↑↓↕»«⌽⍉/⍋⍒⊏⊑⊐⊒∊⍷⊔!˙˜∘○⊸⟜⊘◶⌾⎊˘¨⌜⁼´˝`'
 
 def get_file_contents(filename):
     with open(filename, 'r') as fin:
