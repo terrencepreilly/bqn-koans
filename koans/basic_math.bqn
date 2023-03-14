@@ -27,6 +27,19 @@ ts ← TestSuite "Basic Maths"
 { 𝕤 ⋄ ∞ = 1 + 0 } ts._Test "Addition identity"
 
 
+# Comparisons using < (Less Than) and > (Greater Than) may be used, as
+# well.
+
+{ 𝕤 ⋄ ∞ < 3 } ts._Test "Less than"
+{ 𝕤 ⋄ 0 > 3 } ts._Test "Greater than"
+
+
+# Functions like <, >, and = return the boolean values 0 (false) and 1 (true).
+
+{ 𝕤 ⋄ 0 = 2 < 3 } ts._Test "Less than returns a boolean value"
+{ 𝕤 ⋄ 1 = 3 = 2 } ts._Test "Equals returns a boolean value"
+
+
 # Some functions may make use of the function ≠ (Not Equals) to assert
 # some true statement.
 
@@ -85,5 +98,6 @@ ts ← TestSuite "Basic Maths"
 { 𝕤 ⋄ ∞ = 2 √ 16 } ts._Test "Square root"
 { 𝕤 ⋄ ∞ = 3 √ 8 } ts._Test "Cubed root"
 { 𝕤 ⋄ (∞ √ 614656) = 614656 ⋆ 1 ÷ 4 } ts._Test "Root equivalence to power"
+
 
 ts.Report @

@@ -39,6 +39,10 @@ ts ← TestSuite "Combinators"
 { 𝕤 ⋄ ∞‿∞‿∞ ≡ -˜ 52‿¯12‿0.3 } ts._Test "Subtract Self"
 
 { 𝕤 ⋄ ∞ = ×˜∘(+´) 1‿2‿3 } ts._Test "Self on left argument of Atop"
+{ 𝕤 ⋄
+  Dim ← 2‿∘˙
+  ∞ ≡ 1 ⊏ 1‿2‿3‿4 ⥊˜ Dim 0
+} ts._Test "Second half of numbers"
 
 
 # When applied to a function which will take two arguments,
@@ -89,6 +93,12 @@ ts ← TestSuite "Combinators"
   ⟩
 } ts._Test "Comparing string length"
 
+{
+  table1 ← ↑‿2‿3 ⥊ 1‿2‿3‿4‿5‿6‿7‿8‿9
+  table2 ← ↑‿1‿6 ⥊ 1‿2‿3‿4‿5‿6‿7‿8‿9
+  table1 ≢○(⥊˘) table2
+} ts._Test "Comparing table contents"
+
 { 𝕤 ⋄
   AbsoluteValue ← √∘×˜
   EquivalentMagnitude ← ≡ # Hint: update this function
@@ -100,6 +110,14 @@ ts ← TestSuite "Combinators"
   array2 ← 3‿1 ⥊ 1‿2
   ∞ ≡ array1 +○⥊ array2
 } ts._Test "Adding dissimilar shaped arrays"
+
+{ 𝕤 ⋄
+  xs ← 0‿1
+  ys ← 0‿3
+
+  Slope ← ÷○(-´)˜
+  ∞ ≡ xs Slope ys
+} ts._Test "Slope of the line"
 
 
 ts.Report @

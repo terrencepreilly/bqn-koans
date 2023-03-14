@@ -24,6 +24,8 @@ koans ← ⟨
   "combinators"
   "trains"
   "blocks"
+  "headers"
+  "under"
 ⟩
 
 # ANSII Escape codes for colors.

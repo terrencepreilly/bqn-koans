@@ -41,6 +41,12 @@ ts ← TestSuite "Trains"
   2 = Mean 1‿2‿3
 } ts._Test "Mean"
 
+{ 𝕤 ⋄
+  Id ← - -
+  Proportion ← Id ÷ +´○⥊
+  ∞ ≡ Proportion 5‿2‿3
+} ts._Test "Get the proportion of each number in a list"
+
 
 # The function ⋈ (Pair) joins two values into a list. It can be useful as a central
 # function for comparing the results of functions.
@@ -53,13 +59,18 @@ ts ← TestSuite "Trains"
   ∞ ≡ (+´ ⋈ -´) 1‿2‿3
 } ts._Test "Comparing +´ and -´"
 
+{ 𝕤 ⋄
+  ∞ ≡ 9 (⋈○√) 4
+} ts._Test "Comparing square roots"
+
 
 # The left argument in trains can be replaced by · (Nothing).  In this case,
 # the expression is equivalent to composition.  That is, ·𝔽𝔾 is equivalent to
 # 𝔽 ∘ 𝔾.
 
 { 𝕤 ⋄
-  AbsoluteValue ← {1 + × 𝕩}◶-‿{𝕩}‿{𝕩}
+  Id ← - -
+  AbsoluteValue ← √ ∘ (Id ⋆ 2˙)
   Distance ← · AbsoluteValue -
   ∞ = ¯1 Distance 5
 } ts._Test "Distance between values"
@@ -71,7 +82,12 @@ ts ← TestSuite "Trains"
 
 
 # You can also just leave out the left argument, in which case it's equivalent
-# to leaving out the left argument is equivalent to replacing it with ·.
+# to replacing it with ·.
+
+{ 𝕤 ⋄
+  AddNegated ← +˝ -
+  ∞ ≡ AddNegated 2‿∘ ⥊ 1‿6‿¯3‿4
+} ts._Test "Add negated major cells"
 
 { 𝕤 ⋄
   Id ← (--) (÷÷)

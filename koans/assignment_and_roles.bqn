@@ -39,10 +39,10 @@ ts ← TestSuite "Assignment"
 } ts._Test "Multiple variables"
 
 { 𝕤 ⋄
-  shape ← 2‿∘
-  data ← 1‿2‿3‿4‿5‿6
-  (2‿0 ⥊ data) ≡ shape ⥊ data
-} ts._Test ""
+  shape ← ↑‿2
+  data ← 1‿2‿3‿4‿5‿6‿7
+  ∞ ≡ +˝ shape ⥊ data
+} ts._Test "Add odd and even numbers"
 
 
 # If a value is going to be used as a function (the function role), its name
@@ -84,13 +84,18 @@ ts ← TestSuite "Assignment"
 
 {
   Deshape ← ⥊
-  ∞ ≡ Deshape 2‿2 ⥊ 1‿2‿3
+  ∞ ≡ Deshape ↑‿4 ⥊ 1‿2‿3
 } ts._Test "Deshaping"
 
 { 𝕤 ⋄
   SumOver ← +´
   ∞ = SumOver 1‿2‿3
 } ts._Test "Using function names as documentation"
+
+{ 𝕤 ⋄
+  DivideOverRows ← ÷´˘
+  ∞ ≡ ↑‿2 ⥊ 10‿5‿4‿2
+} ts._Test "Divide over each row"
 
 
 # One-modifier values have a 1-modifier role by default.  This role follows
@@ -105,6 +110,11 @@ ts ← TestSuite "Assignment"
   _Fold ← ´
   ∞ ≡ × _Fold 1‿2‿3
 } ts._Test "Fold with 1-modifier role"
+
+{ 𝕤 ⋄
+  _Insert ← ˝
+  ∞ ≡ ÷ _Insert 2‿3 ⥊ 15‿10‿5‿3‿2‿1
+} ts._Test "Insert with 1-modifier role"
 
 
 # Two-modifier values have a 2-modifier role by default. We haven't yet seen a
@@ -141,6 +151,11 @@ ts ← TestSuite "Assignment"
     1‿2‿3‿4
   ⟩
 } ts._Test "ReciprocalSum"
+
+{ 𝕤 ⋄
+  Tens ← 10˙ × ⊏
+  ∞ = +´ Tens 1‿3 ⥊ 1‿2‿3
+} ts._Test "Ten times the first major cell"
 
 
 # The spelling convention for a 2-modifier is for it to begin and end with a '_'.
