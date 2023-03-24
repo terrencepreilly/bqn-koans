@@ -26,6 +26,7 @@ koans ← ⟨
   "blocks"
   "headers"
   "under"
+  "bind"
 ⟩
 
 # ANSII Escape codes for colors.
