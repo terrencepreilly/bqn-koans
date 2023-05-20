@@ -14,7 +14,7 @@
 
 ⟨TestSuite⟩ ← •Import "../test.bqn"
 
-ts ← TestSuite "Under"
+ts ← TestSuite "Bind"
 
 
 # Two combinators which are particularly useful with ⌾ are ⊸ (Before) and ⟜
