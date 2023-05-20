@@ -26,6 +26,8 @@ koans ← ⟨
   "blocks"
   "headers"
   "under"
+  "bind"
+  "reverse_rotate_transpose"
 ⟩
 
 # ANSII Escape codes for colors.

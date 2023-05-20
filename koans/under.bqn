@@ -68,60 +68,25 @@ ts ← TestSuite "Under"
 } ts._Test "Sum under square"
 
 
-# We said that ⁼ could not invert certain structural functions like
-# reshaping, dropping or taking elements from an array.  ⌾, on the other
-# hand, can do so because it knows the original elements of the array.
-# This is called "Structural Under".
+# We said that ⁼ could not invert certain structural functions like reshaping,
+# dropping or taking elements from an array. ⌾, on the other hand, can do so
+# because it knows the original elements of the array. This is called
+# "Structural Under".
 #
-# Take ⊑ as an example, which gets the first element of the array.
-# If we would like to change the first element of the array to, say,
-# 9, we could do something like 9⌾⊑.  In this verb, the first element
-# will be got from the array, the function 9 will be applied to it (which
-# will always return 9), and then the transformed value will be placed back
-# into the array at the same location.
+# Take ⊑ as an example, which gets the first element of the array. If we would
+# like to change the first element of the array to, say, 9, we could do
+# something like 9⌾⊑. In this verb, the first element will be got from the
+# array, the function 9 will be applied to it (which will always return 9),
+# and then the transformed value will be placed back into the array at the
+# same location.
 
 { 𝕤 ⋄
   ∞ ≡ 9⌾⊑ 3‿1‿1
 } ts._Test "Replacing the first element"
 
+{
+  ∞ ≡ (0‿0)⌾⊏ 2‿2 ⥊ 1
+} ts._Test "Replacing the first cell"
 
-# Two combinators which are particularly useful in this context are ⊸ (Before)
-# and ⟜ (After). These combinators can have different purposes, and we'll
-# examine them closer later.  𝔽⊸𝔾 𝕩 is equivalent to # (𝔽 𝕩) 𝔾 𝕩,
-# and 𝕨 𝔽⊸𝔾 𝕩 is equivalent to (𝔽 𝕨) 𝔾 𝕩.  Similarly, 𝔽⟜𝔾 𝕩 is
-# equivalent to 𝕩 𝔽 (𝔾 𝕩) and 𝕨 𝔽⟜𝔾 𝕩 is equivalent to 𝕨 𝔽 (𝔾 𝕩).
-# Graphically,
-#
-#       𝔽⊸𝔾 𝕩    𝕨 𝔽⊸𝔾 𝕩    𝔽⟜𝔾 𝕩    𝕨 𝔽⟜𝔾 𝕩
-#
-#        𝔾          𝔾        𝔽          𝔽
-#       ╱ ╲        ╱ ╲      ╱ ╲        ╱ ╲
-#      𝔽   𝕩      𝔽   𝕩    𝕩   𝔾      𝕨   𝔾
-#      │          │            │          │
-#      𝕩          𝕨            𝕩          𝕩
-#
-# In short, ⊸ and ⟜ apply a function to the left or right argument, respectively,
-# before passing it to a function.  Remember that the function which is applied
-# first is at the pointy end of the combinator.
-
-{ 𝕤 ⋄
-  ∞ = 2 ÷⊸× 6
-} ts._Test "Preprocessing left side"
-
-{ 𝕤 ⋄
-  ∞ = 2⊸⊑ 2‿7‿1‿8‿2
-} ts._Test "With value to bind argument"
-
-
-# We can use ⟜ in conjunction with ⊑ to build a modified array at a given index.
-
-{ 𝕤 ⋄
-  nums ← 1‿1‿2‿0‿5‿8‿13
-  1‿1‿2‿0‿5‿8‿13 ≡ 3⌾(3⊸⊑) nums
-} ts._Test "Update the fourth element"
-
-{ 𝕤 ⋄
-  ∞‿∞‿∞ ≡ 1⌾⊑ 2⌾(1⊸⊑) 3⌾(2⊸⊑) 0‿0‿0
-} ts._Test "Multiple updates"
 
 ts.Report @
