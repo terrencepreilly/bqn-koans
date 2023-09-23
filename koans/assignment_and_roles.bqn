@@ -46,7 +46,7 @@ ts ← TestSuite "Assignment"
 
 
 # If a value is going to be used as a function (the function role), its name
-# should begin with a capital letter, and should not start or with a '_'.
+# should begin with a capital letter, and should not start or end with a '_'.
 # Variable names are case insensitive, which is used in BQN to mix roles.  For
 # example, we may want to use the number 2 as a function, which is equivalent to
 # 2˙ (a constant function.)
@@ -93,8 +93,8 @@ ts ← TestSuite "Assignment"
 } ts._Test "Using function names as documentation"
 
 { 𝕤 ⋄
-  DivideOverRows ← ÷´˘
-  ∞ ≡ ↑‿2 ⥊ 10‿5‿4‿2
+  DivideOverRows ← ÷  # Hint: Update function to satisfy expression below.
+  2‿2 ≡ DivideOverRows ↑‿2 ⥊ 10‿5‿4‿2
 } ts._Test "Divide over each row"
 
 
@@ -153,10 +153,9 @@ ts ← TestSuite "Assignment"
 } ts._Test "ReciprocalSum"
 
 { 𝕤 ⋄
-  Tens ← 10˙ × ⊏
-  ∞ = +´ Tens 1‿3 ⥊ 1‿2‿3
-} ts._Test "Ten times the first major cell"
-
+  MyFunc ← +´ ∘ - ∘ ×˜ ∘ -
+  0
+} ts._Test "Long suite of functions"
 
 # The spelling convention for a 2-modifier is for it to begin and end with a '_'.
 

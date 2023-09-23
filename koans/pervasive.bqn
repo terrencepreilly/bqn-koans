@@ -20,11 +20,14 @@ ts ← TestSuite "Pervasive functions"
 # Common math functions are termed "pervasive", meaning that they apply to the
 # smallest elements of an array.
 
-{ 𝕤 ⋄ 1‿2‿3 ≡ 2 × 1‿2‿3 } ts._Test "Multiplication is pervasive"
-{ 𝕤 ⋄ 1‿2‿3 ≡ 2 + 3‿2‿3 } ts._Test "Addition is pervasive"
-{ 𝕤 ⋄ 1‿2‿3 ≡ 2 - ¯1‿0‿1 } ts._Test "Subtraction is pervasive"
-{ 𝕤 ⋄ 2‿4‿6 ≡ 2‿4‿6 ÷ 2 } ts._Test "Division is pervasive"
+{ 𝕤 ⋄ ∞ ≡ 1 + ⟨1⟩ } ts._Test "Addition is pervasive"
+{ 𝕤 ⋄ ∞ ≡ 1 + ⟨⟨1⟩⟩ } ts._Test "Pervading two deep"
+{ 𝕤 ⋄ ∞ ≡ 1 + ⟨⟨⟨1⟩⟩⟩ } ts._Test "Pervading three deep"
+{ 𝕤 ⋄ ∞ ≡ 1 + ⟨1, ⟨2, 3⟩, ⟨⟨4⟩, 5⟩⟩ } ts._Test "Pervading different levels"
 
+{ 𝕤 ⋄ 1‿2‿3 ≡ 2 - ¯1‿0‿1 } ts._Test "Subtraction is pervasive"
+{ 𝕤 ⋄ 1‿2‿3 ≡ 2 × 1‿2‿3 } ts._Test "Multiplication is pervasive"
+{ 𝕤 ⋄ 2‿4‿6 ≡ 2‿4‿6 ÷ 2 } ts._Test "Division is pervasive"
 { 𝕤 ⋄ ⟨¯1, ∞⟩ ≡ - 1‿2 } ts._Test "Negate is pervasive"
 { 𝕤 ⋄ ∞‿∞‿1 ≡ × ¯325‿0‿848 } ts._Test "Sign is pervasive"
 { 𝕤 ⋄ ⟨∞⟩ ≡ ⋆ ⟨0⟩ } ts._Test "Exponential is pervasive"

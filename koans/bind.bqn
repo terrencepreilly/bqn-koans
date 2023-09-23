@@ -130,11 +130,11 @@ ts ← TestSuite "Bind"
 #     ((F⊸G) 𝕨) H 𝕩               By definition of ⊸
 #     ((F 𝕨) G 𝕨) H 𝕩             By definition of ⊸
 #
-# Which is a good deal more complex.
+# Which is a good deal more complex, and probably--as a result--less useful.
 
 { 𝕤 ⋄
   ∞ ≡ 3 -⊸×⊸÷ 9
-} ts._Test ""
+} ts._Test "Left left"
 
 
 ts.Report @

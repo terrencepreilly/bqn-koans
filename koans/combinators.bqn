@@ -39,10 +39,9 @@ ts ← TestSuite "Combinators"
 { 𝕤 ⋄ ∞‿∞‿∞ ≡ -˜ 52‿¯12‿0.3 } ts._Test "Subtract Self"
 
 { 𝕤 ⋄ ∞ = ×˜∘(+´) 1‿2‿3 } ts._Test "Self on left argument of Atop"
-{ 𝕤 ⋄
-  Dim ← 2‿∘˙
-  ∞ ≡ 1 ⊏ 1‿2‿3‿4 ⥊˜ Dim 0
-} ts._Test "Second half of numbers"
+
+{ 𝕤 ⋄ ⟨3, 3, 3⟩‿⟨2, 2⟩‿⟨1⟩ ≡ ⥊ 3‿2‿1
+} ts._Test "Self size"
 
 
 # When applied to a function which will take two arguments,
@@ -51,7 +50,12 @@ ts ← TestSuite "Combinators"
 
 { 𝕤 ⋄ ∞ = 1 -˜ 2 } ts._Test "Subtract Swap"
 { 𝕤 ⋄ ∞ = 2 ÷˜ 32 } ts._Test "Divide Swap"
+{ 𝕤 ⋄
+  Dim ← 2‿∘˙
+  ∞ ≡ 1 ⊏ 1‿2‿3‿4 ⥊˜ Dim 0
+} ts._Test "Second half of numbers"
 
+{ 𝕤 ⋄ 3 = 9 √ 2 } ts._Test "Root swap"
 
 # This can be useful to reduce the number of parentheses needed, at times.
 # The below examples are somewhat contrived, but the same principal will
@@ -59,9 +63,15 @@ ts ← TestSuite "Combinators"
 #
 # Note: add parentheses to the right side to form an equivalent expression.
 
+
 { 𝕤 ⋄ (2 ÷˜ 9 - 3) = 9 - 3 ÷ 2} ts._Test "Reduce parentheses"
 { 𝕤 ⋄ (8‿27 √˜ 6 - 3) ≡ 6 - 3 √ 8‿27 } ts._Test "Reduce more parentheses"
 
+{ 𝕤 ⋄
+  a ← (1 + 2) √ 27
+  # Note: rewrite the above expression without parentheses.
+  a = ∞
+} ts._Test "Rearrange to reduce parentheses"
 
 # ○ (Over) is a combinator similar to ∘.  In the monadic case, they act
 # the same.  That is, 𝔽 ○ 𝔾 𝕩 is equivalent to 𝔽 ∘ 𝔾 𝕩 which is equivalent
@@ -94,6 +104,7 @@ ts ← TestSuite "Combinators"
 } ts._Test "Comparing string length"
 
 {
+  # Note: The tables' contents should remain unchanged.
   table1 ← ↑‿2‿3 ⥊ 1‿2‿3‿4‿5‿6‿7‿8‿9
   table2 ← ↑‿1‿6 ⥊ 1‿2‿3‿4‿5‿6‿7‿8‿9
   table1 ≢○(⥊˘) table2

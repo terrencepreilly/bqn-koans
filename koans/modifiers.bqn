@@ -56,21 +56,16 @@ ts ← TestSuite "Modifiers"
 #            𝕩
 #
 # 𝔽3 must be evaluated before 𝔽2, in order to pass a value for 𝔽2's right
-# argument. This is # right-associativity.  Equivalently, representing order
+# argument. This is right-associativity.  Alternatively, representing order
 # with parentheses, we could say that the expression 𝔽1 𝔽2 𝔽3 𝕩 is
 # equivalent to 𝔽1 (𝔽2 (𝔽3 𝕩)).
 #
 # Modifiers, however, associate to the left.  If _𝔽1, _𝔽2, & 𝔽3. are modifiers,
-# and 𝔾 is a function, then we could represent 𝔾 _𝔽1 _𝔽2 𝔽3 as
-# ((𝔾 _𝔽1) _𝔽2) _𝔽3.  Or, as a tree,
-#
-#         _𝔽3
-#        /
-#       _𝔽2
-#      /
-#     _𝔽1
-#    /
-#   𝔾
+# and 𝔾 is a function, then we could represent 𝔾 _𝔽1 _𝔽2 𝔽3 𝕩 as
+# (((𝔾 _𝔽1) _𝔽2) _𝔽3) 𝕩.  That is, the leftmost modifier, _𝔽1, is applied to the
+# function 𝔾 first.  Then _𝔽2 takes that result as an argument, and so on.
+# Finally, the arguments are applied to the returned function.
+
 
 { 𝕤 ⋄ ∞ ≡ 1˙¨ 2‿4 } ts._Test "Combining modifiers"
 { 𝕤 ⋄ "   " ≢ ' '˙¨ 1‿2‿3 } ts._Test "Combining modifiers in strings"
@@ -92,7 +87,7 @@ ts ← TestSuite "Modifiers"
 
 { 𝕤 ⋄ ∞ = =´ 0‿0‿1‿0‿1 } ts._Test "Check if all elements are equal"
 { 𝕤 ⋄ ∞ = ÷´ 4‿4‿4‿4‿4‿4‿2 } ts._Test "Repeated division"
-{ 𝕤 ⋄ 1‿2‿3 ≢ +´¨ ⟨⟨1⟩, 1‿1, 1‿1‿1⟩ } ts._Test "Folding addition of each"
+{ 𝕤 ⋄ ∞ ≡ +´¨ ⟨⟨1⟩, 1‿1, 1‿1‿1⟩ } ts._Test "Folding addition of each"
 
 
 # ´ generalizes a common pattern in many Mathematical expressions, called

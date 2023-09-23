@@ -67,6 +67,14 @@ ts ← TestSuite "Under"
   ∞ = 3 +⌾(×˜) 4
 } ts._Test "Sum under square"
 
+{ 𝕤 ⋄
+  ¯81 = (×˜ ⌾ ×) ¯9
+} ts._Test "Negative square"
+
+{ 𝕤 ⋄
+  1 = ¯1 (×˜)○⊢ ¯2
+} ts._Test "Devolving to monadic"
+
 
 # We said that ⁼ could not invert certain structural functions like reshaping,
 # dropping or taking elements from an array. ⌾, on the other hand, can do so
