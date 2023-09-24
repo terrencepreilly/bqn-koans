@@ -62,7 +62,7 @@ ts ← TestSuite "Blocks"
     a ↩ "Inside"
   }
   ∞ ≡ a
-} ts._Test ""
+} ts._Test "Outside inside"
 
 
 # This can be useful for updating a variable without cluttering the outer scope.
@@ -78,7 +78,8 @@ ts ← TestSuite "Blocks"
     rect_surface_area ← circle_circumference × height
     cylinder_surface_area ↩ rect_surface_area + 2 × circle_surface_area
   }
-  ((2 + ∞ × π) ÷ π) = cylinder_surface_area
+  expected ← ∞
+  expected = cylinder_surface_area
 } ts._Test "Keeping things clean"
 
 { 𝕤 ⋄
@@ -129,14 +130,14 @@ ts ← TestSuite "Blocks"
   ∞ = a
 } ts._Test "Redefining in a scope"
 
-{ 𝕤 ⋄
-  PairOverLengthExplicit ← { - ≠ 𝕩 }
-  PairOverLength ← -○≠
-  (PairOverLength ≢ PairOverLengthExplicit) 1‿2‿3‿4
-} ts._Test "Replicating over"
-
 
 # Like other function definitions, blocks can be assigned to a variable.
+
+{ 𝕤 ⋄
+  NegateOverLengthExplicit ← { 𝕩 }
+  NegateOverLength ← -○≠
+  (NegateOverLength ≡ NegateOverLengthExplicit) 1‿2‿3‿4
+} ts._Test "Negating over"
 
 { 𝕤 ⋄
   Double ← { 𝕩 × 2 }
@@ -158,10 +159,10 @@ ts ← TestSuite "Blocks"
 
 { 𝕤 ⋄
   count ← 1
-  Inc ← { count ↩ 𝕩 }  # Hint: Update this function.
-  Inc 2
-  Inc 2
-  Inc 2
+  Acc ← { count ↩ 𝕩 }  # Hint: Update this function.
+  Acc 2
+  Acc 2
+  Acc 2
   8 = count
 } ts._Test "Maintaining a counter with ↩"
 
@@ -172,6 +173,11 @@ ts ← TestSuite "Blocks"
 { 𝕤 ⋄
   ∞ = 2 { 𝕨 × 𝕩 } 3
 } ts._Test "Simple dyadic function"
+
+{ 𝕤 ⋄
+  Left ← { 𝕩 }
+  3 (⊣ = Left) 1
+} ts._Test "Implement left"
 
 { 𝕤 ⋄
   ∞ = 2 { 𝕩 - 𝕨 } 3
@@ -192,10 +198,10 @@ ts ← TestSuite "Blocks"
 } ts._Test "Replicating dyadic over"
 
 
-# The arguments 𝕘 and 𝕗 are similar to 𝕨 and 𝕩, in that they refer to the left
-# and right arguments, respectively. But 𝕗 and 𝕘 refer to functions. If a
-# block contains 𝕗 (and no 𝕘), then it defines a 1-modifier. If a block
-# contains a 𝕘, then it defines a 2-modifier.
+# The arguments 𝔽 and 𝔾 are similar to 𝕨 and 𝕩, in that they refer to the left
+# and right arguments, respectively. But 𝔽 and 𝔾 refer to functions. If a
+# block contains 𝔽 (and no 𝔾), then it defines a 1-modifier. If a block
+# contains a 𝔾, then it defines a 2-modifier.
 
 { 𝕤 ⋄
   _Id ← { 𝔽 }
@@ -248,9 +254,24 @@ ts ← TestSuite "Blocks"
   ∞ = 1 <◶-‿-˜ 2
 } ts._Test "Making things always positive"
 
+# Now we can use 𝕊 to call the original function with new arguments
+# (to recurse) until we reach the base case.
+
 { 𝕤 ⋄
   SumTo ← { 𝕨 {0 = 𝕩}◶({𝕨 + 𝕩} 𝕊 {𝕩 - 1})‿{𝕨} 𝕩 }
   ∞ = 0 SumTo 3
 } ts._Test "Sum from 1 to n - 1"
+
+# Alternatively, we could use the function name itself to perform recursion.
+# This can allow keeping most of the definition tacit. However, it won't work
+# in a function which is given no name. And if the function name is changed,
+# all references to it must also be updated.
+
+{ 𝕤 ⋄
+  # Hint: Replace a function with "Spread" to make this recursive.
+  Spread ← (0 = ⊣)◶{ (𝕨 - 1) × (𝕨 ∾ 𝕩) }‿⊢
+  1‿2‿3 ≡ 3 Spread ⟨⟩
+} ts._Test "Recurse with explicit self-reference"
+
 
 ts.Report @

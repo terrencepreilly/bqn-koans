@@ -180,7 +180,7 @@ ts ← TestSuite "Arrays"
 
 { 𝕤 ⋄ ∞ ≡ +˝ 2‿2 ⥊ 1‿2‿3‿4 } ts._Test "Summing columns"
 { 𝕤 ⋄
-  (+´ ⟨3⟩ ⥊ ⟨1⟩) ≡ +˝ 3‿3 ⥊ 1‿2‿3
+  (+´ 3 ⥊ ⟨⟨1⟩⟩) ≡ +˝ 3‿3 ⥊ 1‿2‿3
 } ts._Test "Adding lists vs summing columns"
 
 { 𝕤 ⋄ ∞ = +´ ⟨3⟩ ⥊ 1 } ts._Test "Summing over a list"

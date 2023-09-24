@@ -41,12 +41,6 @@ ts ← TestSuite "Trains"
   2 = Mean 1‿2‿3
 } ts._Test "Mean"
 
-{ 𝕤 ⋄
-  Id ← - -
-  Proportion ← Id ÷ +´○⥊
-  ∞ ≡ Proportion 5‿2‿3
-} ts._Test "Get the proportion of each number in a list"
-
 
 # The function ⋈ (Pair) joins two values into a list. It can be useful as a central
 # function for comparing the results of functions.
@@ -62,6 +56,18 @@ ts ← TestSuite "Trains"
 { 𝕤 ⋄
   ∞ ≡ 9 (⋈○√) 4
 } ts._Test "Comparing square roots"
+
+
+# Another set of functions which function well with trains are ⊣ (Left) and ⊢ (Right).
+# These return their left or right arguments, respectively.
+
+{ 𝕤 ⋄ 1 = 3 ⊣ 1 } ts._Test "Left"
+{ 𝕤 ⋄ 3 = 3 ⊢ 1 } ts._Test "Right"
+
+{ 𝕤 ⋄
+  ReverseMinus ← -  # Create a train using ⊣ and ⊢ to reverse the order of operands
+  1 ((-˜) ≡ ReverseMinus) 2
+} ts._Test "Reverse with Left and Right"
 
 
 # The left argument in trains can be replaced by · (Nothing).  In this case,
@@ -83,6 +89,12 @@ ts ← TestSuite "Trains"
 
 # You can also just leave out the left argument, in which case it's equivalent
 # to replacing it with ·.
+
+{ 𝕤 ⋄
+  Id ← - -
+  Proportion ← Id ÷ +´○⥊
+  ∞ ≡ Proportion 5‿2‿3
+} ts._Test "Get the proportion of each number in a list"
 
 { 𝕤 ⋄
   AddNegated ← +˝ -

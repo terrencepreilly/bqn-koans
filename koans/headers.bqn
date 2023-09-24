@@ -23,8 +23,8 @@ ts ← TestSuite "Headers"
 # Monadic functions can be documented like { 𝕊 𝕩 : ... }.
 
 { 𝕤 ⋄
-  IsPositive ← { 𝕊 𝕩 : 𝕩 > 0 }
-  0 = IsPositive 3
+  IsPositive ← { 𝕊 𝕩 : 𝕩 < 0 }
+  IsPositive 3
 } ts._Test "Defining a monadic function"
 
 
@@ -77,11 +77,6 @@ ts ← TestSuite "Headers"
   ∞ ≡ {𝕩 × 2} _Compare_ {𝕩 ÷ 2} 4
 } ts._Test "Documenting arguments"
 
-{
-  𝕤 ⋄
-  ∞ = ¯2 { Left : 𝕨 } 6
-} ts._Test "Documenting function names"
-
 
 # Alternatively, unneeded symbols can be trimmed from the header as long as
 # the role of the block can be disambiguated.
@@ -90,6 +85,11 @@ ts ← TestSuite "Headers"
   Inc ← { 𝕊 : ¯1 + 𝕩 }
   3 = Inc 2
 } ts._Test "Reducing noise"
+
+{
+  𝕤 ⋄
+  ∞ = ¯2 { Left : 𝕨 } 6
+} ts._Test "Documenting function names"
 
 
 # Parameters can also be replaced by values.  In that case, the header will
@@ -157,17 +157,6 @@ ts ← TestSuite "Headers"
   IsBizet user
 } ts._Test "Using nothing"
 
-{ 𝕤 ⋄
-  IsEven ← {
-    0 : 1 ;
-    1 : 0 ;
-    2 : 1 ;
-    3 : 0 ;
-    4 : 1
-  }
-  IsEven 3
-} ts._Test "IsEven"
-
 
 # Destructuring works well when matching specific values, but doesn't work for
 # matching against ranges or matching against derived values. In that case, we
@@ -175,7 +164,7 @@ ts ← TestSuite "Headers"
 # The header can be dropped, as above.
 
 { 𝕤 ⋄
-  Not ← { 𝕩? 0 ; 1 }
+  Not ← { 𝕩 ? 0 ; 1 }
   Not 1
 } ts._Test "Logical not"
 
@@ -198,7 +187,7 @@ ts ← TestSuite "Headers"
   }
   ToDoNext ← {
     𝕊 ⟨0, ·, description⟩‿· : description ;
-    𝕊 ⟨1, ·, ·⟩‿others : others ;
+    𝕊 ⟨1, ·, ·⟩‿others : 𝕊 others ;
     𝕊 ⟨⟩ : ""
   }
 
